@@ -4,6 +4,6 @@ connexion = sql.connect(
         host="",
         port=3306,
         database="",
-        user="integracion",
+        user="integrador",
         password="RETOS"
     )

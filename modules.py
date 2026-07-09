@@ -1,5 +1,5 @@
-import os ;
-
+import pymysql;
+from DBpython import *;
 def Menu()-> int :
     opciones = """" 
     Opciones a Elegir
@@ -13,5 +13,14 @@ def Menu()-> int :
     opc =int(input(opciones))
     return opc
 
-#def MostrarContenido()-> None :
+def InsetarContenido()-> None :
+     
+     idpersona =txt1.get()
+     nombre =txt2.get();
+     edad =txt.get();
+     sqlsentence ="";
+     columnas = ();
+     connexion=pymysql.connect(host='',user='',password='',database='')
+     curso=connexion.cursor();
+     resul=curso.execute(sqlsentence, columnas)
     
