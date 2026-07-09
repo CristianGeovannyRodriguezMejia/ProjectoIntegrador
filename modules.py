@@ -13,5 +13,5 @@ def Menu()-> int :
     opc =int(input(opciones))
     return opc
 
-def MostrarContenido()-> None :
+#def MostrarContenido()-> None :
     
