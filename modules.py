@@ -13,13 +13,11 @@ def Menu()-> int :
     opc =int(input(opciones))
     return opc
 
-def InsetarContenido()-> None :
-     
-
-    id_transaccion =input("Digite el id  : ")
+def InsetarContenido() :
+    id =input("Digite el id  : ")
     tipo =input("Ingrese el tipo transaccion Deposito/Retiro/Tranferencia : ");
-    cuenta_origen =input("digite la cuenta de origen : ");
-    cuenta_destino =input("digite la cuenta destino : ");
+    cuentaO =input("digite la cuenta de origen : ");
+    cuentaD =input("digite la cuenta destino : ");
     monto =input("digite el monto : ");
     descripcion=input("descricion de tranferencia : ");
     usuario = input("Ingrese su nombre de ususario :")
@@ -32,14 +30,14 @@ def InsetarContenido()-> None :
                                   )
         ps =connexion.cursor();
    
-        sqlsentence ="INSEtipo =txt3.get();RT INTO transacciones(id_transaccion,fecha,tipo,cuenta_origen,cuenta_destino,monto,descripcion,usuario,) VALUES (%s,NOW(),%s,%s,%s,%s,%s,%s)";
-        columnas = (id_transaccion,tipo,cuenta_origen,cuenta_destino,monto,descripcion,usuario,);
+        sqlsentence ="INSERT INTO transacciones(id_transaccion,fecha,tipo,cuenta_origen,cuenta_destino,monto,descripcion,usuario) VALUES (%(id)s,NOW(),%(tipo)s,%(cuentaO)s,%(cuentaD)s,%(monto)s,%(descripcion)s,%(user)s)";
+        columnas = {"id" : id,"tipo" : tipo, "cuentaO" :cuentaO,"cuentaD":cuentaD, "monto":monto,"descripcion" : descripcion , "user":usuario};
 
     
         ps.execute(sqlsentence,columnas)
         connexion.commit()
         print("Creo que se reguistro con exito")
-    
+        return columnas
     except pymysql.Error as fallo :
         print(f"Nose que paso pero : {fallo}")
         #Esto cancela la ejecucion si falla algo pongo esto por que no sabia que existia XD
@@ -48,6 +46,5 @@ def InsetarContenido()-> None :
         #pos esto hace lo que dice los cierra
        if ps in locals() : ps.close()
        if connexion in locals() : connexion.close()
-    
     
     
