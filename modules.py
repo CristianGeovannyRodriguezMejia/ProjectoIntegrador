@@ -15,7 +15,7 @@ def Menu()-> int :
 
 def InsetarContenido() :
     id =input("Digite el id  : ")
-    tipo =input("Ingrese el tipo transaccion Deposito/Retiro/Tranferencia : ");
+    tipo =input("Ingrese el tipo transaccion Deposito/Retiro/Tranferencia/Pago Servicio/Intereses : ");
     cuentaO =input("digite la cuenta de origen : ");
     cuentaD =input("digite la cuenta destino : ");
     monto =input("digite el monto : ");
@@ -70,4 +70,30 @@ def EliminarContenido() :
      finally :
          ps.close()
          connexion.close();
-         
+def ActualizarContenido() :
+    try :
+        condicion =input("Ingrese el id del reguistro a modificar : ")
+
+        id =input("Digite el id  : ")
+        tipo =input("Ingrese el tipo transaccion Deposito/Retiro/Tranferencia/Pago Servicio/Intereses : ");
+        cuentaO =input("digite la cuenta de origen : ");
+        cuentaD =input("digite la cuenta destino : ");
+        monto =input("digite el monto : ");
+        descripcion=input("descricion de tranferencia : ");
+        usuario = input("Ingrese su nombre de ususario :")
+        connexion=pymysql.connect(host='192.168.1.77'
+                                  ,port=3306,
+                                  user='integrador'
+                                  ,password='RETOS'
+                                  ,database='banco'
+                                  )
+        ps =connexion.cursor();
+        sqlsentence = "UPDATE transacciones SET id_transaccion =%(id)s, fecha = NOW(), tipo = %(tipo)s, cuenta_origen = %(CuentaD)s, cuenta_destino = %(cuentaD)s, monto =%(monto)s,descripcion = %(Descripcion)s,usuario =%(user)s WHERE id_trasacciones=%(condicion)s  "
+        columna= {"condicion" :condicion,"id" : id,"tipo": tipo, "CuentaO":cuentaO,"CuentaD":cuentaD,"monto": monto,"Descripcion": descripcion,"user": usuario}
+
+    except pymysql.Error as fallo :
+        print(f"cada dia mas esquizofrenico {fallo}")
+        connexion.rollback()
+    finally :
+        ps.close();
+        connexion.close();
