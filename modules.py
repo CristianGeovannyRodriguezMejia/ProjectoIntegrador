@@ -90,10 +90,33 @@ def ActualizarContenido() :
         ps =connexion.cursor();
         sqlsentence = "UPDATE transacciones SET id_transaccion =%(id)s, fecha = NOW(), tipo = %(tipo)s, cuenta_origen = %(CuentaD)s, cuenta_destino = %(cuentaD)s, monto =%(monto)s,descripcion = %(Descripcion)s,usuario =%(user)s WHERE id_trasacciones=%(condicion)s  "
         columna= {"condicion" :condicion,"id" : id,"tipo": tipo, "CuentaO":cuentaO,"CuentaD":cuentaD,"monto": monto,"Descripcion": descripcion,"user": usuario}
-
+        ps.execute(sqlsentence,columna);
+        connexion.commit();
+        print("Reguistro actualizado, Creo ...")
     except pymysql.Error as fallo :
         print(f"cada dia mas esquizofrenico {fallo}")
         connexion.rollback()
+    finally :
+        ps.close();
+        connexion.close();
+def MostrarContenido():
+    try : 
+        connexion=pymysql.connect(host='192.168.1.77'
+                                  ,port=3306,
+                                  user='integrador'
+                                  ,password='RETOS'
+                                  ,database='banco'
+                                  )
+        ps =connexion.cursor();
+        sqlsentence ="SELECT * FROM transacciones;"
+        ps.execute(sqlsentence)
+        #no entendi bien pero baja los reguistros  de la DB y pos se la da a fila
+        # y lo recorremos con un for como todo un pro
+        resul =ps.fetchall()
+    
+        return resul;
+    except pymysql.Error as fallo :
+          print(f"cada dia mas esquizofrenico {fallo}")
     finally :
         ps.close();
         connexion.close();
