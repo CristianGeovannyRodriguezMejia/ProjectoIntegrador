@@ -43,8 +43,31 @@ def InsetarContenido() :
         #Esto cancela la ejecucion si falla algo pongo esto por que no sabia que existia XD
         if connexion in locals(): connexion.rollback();
     finally :
-        #pos esto hace lo que dice los cierra
+        #pos esto hace lo que dice los cierra si existe en variables locales
        if ps in locals() : ps.close()
        if connexion in locals() : connexion.close()
-    
-    
+
+
+def EliminarContenido() :
+     try :
+        id=input("Digite el id de ususario a borrar : ")
+        connexion=pymysql.connect(host='192.168.1.77'
+                                  ,port=3306,
+                                  user='integrador'
+                                  ,password='RETOS'
+                                  ,database='banco'
+                                  )
+        ps =connexion.cursor();
+        sqlsentence ="DELETE transacciones WHERE id_transaccion =%(id)s  "
+        columna = {'id':id }
+        ps.execute(sqlsentence,columna)
+        connexion.commit()
+        print("Usuario borrao con exito")
+        return columna
+     except  pymysql.Error as fallo :
+         print(f"busca que fallo que no entiendo el por que fallo {fallo}")
+         connexion.rollback()
+     finally :
+         ps.close()
+         connexion.close();
+         

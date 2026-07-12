@@ -2,7 +2,8 @@ from modules import *
 import os
 opc=0;
 insert=[];
-while opc != 6 :
+delete=[];
+while opc != 5 :
     os.system("clear");
     opc=Menu();
     match(opc):
@@ -14,7 +15,9 @@ while opc != 6 :
      case 3:
         pass
      case 4:
-        pass
+        delete.append(EliminarContenido());
+     case 5 :
+         pass
 
 
     
