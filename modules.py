@@ -28,24 +28,25 @@ def InsetarContenido() :
                                   ,password='RETOS'
                                   ,database='banco'
                                   )
-        ps =connexion.cursor();
+        ps =connexion.cursor()
    
         sqlsentence ="INSERT INTO transacciones(id_transaccion,fecha,tipo,cuenta_origen,cuenta_destino,monto,descripcion,usuario) VALUES (%(id)s,NOW(),%(tipo)s,%(cuentaO)s,%(cuentaD)s,%(monto)s,%(descripcion)s,%(user)s)";
         columnas = {"id" : id,"tipo" : tipo, "cuentaO" :cuentaO,"cuentaD":cuentaD, "monto":monto,"descripcion" : descripcion , "user":usuario};
 
     
-        ps.execute(sqlsentence,columnas)
-        connexion.commit()
-        print("Creo que se reguistro con exito")
-        return columnas
+        ps.execute(sqlsentence,columnas);
+        connexion.commit();
+        print("trasaccion realizada con exito ");
+        return columnas;
+    
     except pymysql.Error as fallo :
-        print(f"Nose que paso pero : {fallo}")
+        print(f"error fatal : {fallo}");
         #Esto cancela la ejecucion si falla algo pongo esto por que no sabia que existia XD
-        if connexion in locals(): connexion.rollback();
+        connexion.rollback();
     finally :
         #pos esto hace lo que dice los cierra si existe en variables locales
-       if ps in locals() : ps.close()
-       if connexion in locals() : connexion.close()
+        ps.close();
+        connexion.close();
 
 
 def EliminarContenido() :
@@ -62,10 +63,10 @@ def EliminarContenido() :
         columna = {'id':id }
         ps.execute(sqlsentence,columna)
         connexion.commit()
-        print("Usuario borrao con exito")
+        print("Usuario borrado con exito")
         return columna
      except  pymysql.Error as fallo :
-         print(f"busca que fallo que no entiendo el por que fallo {fallo}")
+         print(f"error fatal : {fallo}")
          connexion.rollback()
      finally :
          ps.close()
@@ -92,9 +93,9 @@ def ActualizarContenido() :
         columna= {"condicion" :condicion,"id" : id,"tipo": tipo, "CuentaO":cuentaO,"CuentaD":cuentaD,"monto": monto,"Descripcion": descripcion,"user": usuario}
         ps.execute(sqlsentence,columna);
         connexion.commit();
-        print("Reguistro actualizado, Creo ...")
+        print("Reguistro actualizado exitosamente")
     except pymysql.Error as fallo :
-        print(f"cada dia mas esquizofrenico {fallo}")
+        print(f"error fatal : {fallo}")
         connexion.rollback()
     finally :
         ps.close();
@@ -107,7 +108,7 @@ def MostrarContenido():
                                   ,password='RETOS'
                                   ,database='banco'
                                   )
-        ps =connexion.cursor();
+        ps = connexion.cursor();
         sqlsentence ="SELECT * FROM transacciones;"
         ps.execute(sqlsentence)
         #no entendi bien pero baja los reguistros  de la DB y pos se la da a fila
@@ -116,7 +117,7 @@ def MostrarContenido():
     
         return resul;
     except pymysql.Error as fallo :
-          print(f"cada dia mas esquizofrenico {fallo}")
+          print(f"error fatal : {fallo}")
     finally :
-        ps.close();
-        connexion.close();
+            ps.close()
+            connexion.close();

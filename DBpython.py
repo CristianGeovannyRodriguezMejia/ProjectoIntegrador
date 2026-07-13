@@ -12,4 +12,4 @@ try :
     print("Se conecto ... Creo")
 
 except sql.Error as error :
-    print(f"Pos algo fallo ... Creo {error}")
+    print(f"algo fallo ... Creo {error}")
