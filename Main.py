@@ -4,19 +4,21 @@ opc=0;
 insert=[];
 delete=[];
 update=[];
-fila = MostrarContenido();
-while opc != 5 :
+
+while opc != 5  :
     os.system("clear");
     opc=Menu();
     match(opc):
      case 1 :
-         print("\n ----Reguistros----")
-         if not fila :
-            print("No existen reguistros en la base de datos");
-         else :  
-            for filas in fila :
-               print(filas);     
-            print("\n pulse ENTER para continuar ")      
+            print("\n ----Reguistros----")
+            print("id_tipo | nombre |  tasa_interes | saldo_minimo | descripcion");
+            if not MostrarContenido() :
+               print("No existen reguistros en la base de datos");
+            else :  
+               for filas in MostrarContenido() :
+                  
+                  print(filas);     
+            input("\n pulse ENTER para continuar ")      
      case 2:
         insert.append(InsetarContenido());
         print("\n pulse ENTER para continuar ");
