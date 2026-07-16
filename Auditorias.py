@@ -55,7 +55,7 @@ def InsetarContenido() :
         #creacion del un cursor es un puntenro practicamente
         ps =c.cursor()
         #creacion de la consulta sql
-        sqlsentence ="INSERT INTO auditoria(nombre,accion,tabla_afectada,descripcion),%(nombre)s,%(Accion)s,%(Tabla)s,%(descripcion)s)";
+        sqlsentence ="INSERT INTO auditoria(usuario,fecha,accion,tabla_afectada,descripcion),%(nombre)s,NOW(),%(Accion)s,%(Tabla)s,%(descripcion)s)";
         columnas = {"nombre" : nombre, "Accion" :accion,"Tabla":tablaAfectada,"descripcion" : descripcion};
 
         #ejecucion de esta gracias al puntero
@@ -108,8 +108,8 @@ def ActualizarContenido() :
         
         c =Conexion()
         ps =c.cursor();
-        sqlsentence = "UPDATE auditoria SET nombre=%(nombre)s, accion=%(accion)s tabla_afectada=%(Tabla)s descripcion=%(Descripcion)s WHERE id_log=%(condicion)s  "
-        columna= {"condicion" :condicion,"Accion": accion, "Tabla":tablaAfectada,"Descripcion": descripcion}
+        sqlsentence = "UPDATE auditoria SET fecha=NOW() usuaio=%(nombre)s, accion=%(accion)s tabla_afectada=%(Tabla)s descripcion=%(Descripcion)s WHERE id_log=%(condicion)s  "
+        columna= {"condicion" :condicion,"nombre": nombre,"Accion": accion, "Tabla":tablaAfectada,"Descripcion": descripcion}
         ps.execute(sqlsentence,columna);
         c.commit();
         print("Reguistro actualizado exitosamente")
