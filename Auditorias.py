@@ -1,7 +1,6 @@
 import pymysql
 from DBpython import *;
 #Aca creo la variables globales 
-opcAuditoria =0;
 insertAuditoria=[];
 updateAuditoria=[];
 deleteAuditoria=[];
@@ -15,7 +14,7 @@ def MenuAuditoria():
     4. Eliminar regustros de auditoria
     5. Atras
     Digita la opción deseada: """
-
+    opcAuditoria =0;
     while opcAuditoria != 5  :
         opcAuditoria=int(input(opcionesAuditoria))
         match(opcAuditoria) :
