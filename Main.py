@@ -1,5 +1,7 @@
 from Sucursales import * ;
 from TiposCuenta import *;
+from Auditorias import *;
+from Beneficiarios import *;
 import os
 opc=0;
 while opc != 5  :
@@ -9,13 +11,11 @@ while opc != 5  :
      case 1 :
         MenuCuentas();
      case 2:
-         MenuSurcusales()
+         MenuSurcusales();
      case 3:
-         update.append(ActualizarContenido());
-         print("\n pulse ENTER para continuar ");
+         MenuAuditoria();
      case 4:
-        delete.append(EliminarContenido());
-        print("\n pulse ENTER para continuar ");
+        MenuBeneficiarios();
 
 
 

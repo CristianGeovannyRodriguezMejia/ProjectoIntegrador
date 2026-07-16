@@ -5,7 +5,7 @@ opcCuenta =0;
 insert=[];
 update=[];
 delete=[];
-def MenuCuentas()-> int :
+def MenuCuentas() :
     opcionesCuenta = """ 
     Opciones a Elegir
     1.Mostrar Contenido
@@ -15,8 +15,6 @@ def MenuCuentas()-> int :
     5.Atras
     Digita la opcion a usar :
     """
-    opcCuenta =0;
-    
     while opcCuenta != 5  :
         opcCuenta =int(input(opcionesCuenta))
         match(opcCuenta):

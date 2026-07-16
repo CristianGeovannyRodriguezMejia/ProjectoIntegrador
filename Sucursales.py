@@ -1,5 +1,7 @@
 import pymysql
 from DBpython import *;
+
+opcSucursal=0;
 insertSucusal={};
 updateSucursal={};
 deleteSurcusal={};
@@ -12,11 +14,9 @@ def MenuSurcusales():
     4. Eliminar sucursal
     5. Atras
     Digita la opción deseada: """
-
-    opcCuenta =0;
-    while opcCuenta != 5  :
-        opcCuenta =int(input(opcionesSucusal))
-        match(opcCuenta):
+    while opcSucursal != 5  :
+        opcSucursal =int(input(opcionesSucusal))
+        match(opcSucursal):
          case 1 :        
             print("\n ----Reguistros----")
             print("id_tipo | nombre |  tasa_interes | saldo_minimo | descripcion");
