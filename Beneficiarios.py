@@ -1,4 +1,4 @@
-from DBpython import *;
+from conexion import *;
 import pymysql;
 
 insertbeneficiaros=[];

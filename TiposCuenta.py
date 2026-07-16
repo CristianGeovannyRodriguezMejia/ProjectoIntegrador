@@ -1,5 +1,5 @@
 import pymysql 
-from DBpython import *;
+from conexion import *;
 import os;
 
 insert=[];

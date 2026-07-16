@@ -1,5 +1,5 @@
 import pymysql
-from DBpython import *;
+from conexion import *;
 #Aca creo la variables globales 
 insertAuditoria=[];
 updateAuditoria=[];
