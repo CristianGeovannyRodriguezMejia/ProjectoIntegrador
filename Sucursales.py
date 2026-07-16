@@ -6,8 +6,8 @@ deleteSurcusal={};
 def MenuSurcusales():
     opcionesSucusal = """ 
     === GESTION DE SUCURSALES ===
-    1. Registrar sucursal
-    2. Mostrar sucursales
+    1. Mostrar Sucursales
+    2. Insertar Sucursales
     3. Actualizar sucursal
     4. Eliminar sucursal
     5. Atras
