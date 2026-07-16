@@ -55,7 +55,7 @@ def InsetarContenido() :
         #creacion del un cursor es un puntenro practicamente
         ps =c.cursor()
         #creacion de la consulta sql
-        sqlsentence ="INSERT INTO auditoria(usuario,fecha,accion,tabla_afectada,descripcion),%(nombre)s,NOW(),%(Accion)s,%(Tabla)s,%(descripcion)s)";
+        sqlsentence ="INSERT INTO auditoria(usuario,fecha,accion,tabla_afectada,descripcion)VALUES (%(nombre)s,NOW(),%(Accion)s,%(Tabla)s,%(descripcion)s)";
         columnas = {"nombre" : nombre, "Accion" :accion,"Tabla":tablaAfectada,"descripcion" : descripcion};
 
         #ejecucion de esta gracias al puntero
