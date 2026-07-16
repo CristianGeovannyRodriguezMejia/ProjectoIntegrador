@@ -51,9 +51,8 @@ def InsetarContenido() :
         c=Conexion();
         ps =c.cursor()
    
-        sqlsentence ="INSERT INTO tipos_cuenta(nombre,tasa_interes,saldo_minimo,descripcion) VALUES %(nombre)s,%(tasaInteres)s,%(saldoMinimo)s,%(descripcion)s)";
+        sqlsentence ="INSERT INTO tipos_cuenta(nombre,tasa_interes,saldo_minimo,descripcion) VALUES (%(nombre)s,%(tasaInteres)s,%(saldoMinimo)s,%(descripcion)s)";
         columnas = {"nombre" : nombre, "tasaInteres" :tasaInteres,"saldoMinimo":saldoMinimo,"descripcion" : descripcion};
-
     
         ps.execute(sqlsentence,columnas);
         c.commit();
@@ -75,7 +74,7 @@ def EliminarContenido() :
         id=input("Digite el id de la cuenta a borrar : ")
         c=Conexion();
         ps =c.cursor();
-        sqlsentence ="DELETE tipos_cuenta WHERE id_tipo =%(id)s  "
+        sqlsentence ="DELETE FROM tipos_cuenta WHERE id_tipo =%(id)s"
         columna = {'id':id }
         ps.execute(sqlsentence,columna)
         c.commit()
@@ -100,7 +99,7 @@ def ActualizarContenido() :
         c =Conexion()
         ps =c.cursor();
         sqlsentence = "UPDATE tipos_cuenta SET nombre=%(nombre)s, tasa_interes=%(tasaInteres)s, saldo_minimo=%(saldoMinimo)s, descripcion=%(Descripcion)s WHERE id_tipo=%(condicion)s  "
-        columna= {"condicion" :condicion,"tasaInteres": tasaInteres, "saldoMinimo":saldoMinimo,"Descripcion": descripcion}
+        columna= {"condicion" :condicion,"nombre" : nombre,"tasaInteres": tasaInteres, "saldoMinimo":saldoMinimo,"Descripcion": descripcion}
         ps.execute(sqlsentence,columna);
         c.commit();
         print("Reguistro actualizado exitosamente")
