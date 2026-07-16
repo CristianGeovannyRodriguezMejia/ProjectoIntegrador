@@ -13,10 +13,9 @@ while opc != 5  :
      case 2:
          MenuSurcusales();
      case 3:
-         MenuAuditoria();
-     case 4:
         MenuBeneficiarios();
-
+     case 4:
+        MenuAuditoria();
 
 
     
