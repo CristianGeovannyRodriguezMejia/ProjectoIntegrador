@@ -3,6 +3,7 @@ from TiposCuenta import *;
 from Auditorias import *;
 from Beneficiarios import *;
 import os
+#para prender este entorno virtual solo usa . venv/bin/activate en terminal
 opc=0;
 while opc != 5  :
     os.system("clear");
