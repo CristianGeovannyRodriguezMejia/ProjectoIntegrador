@@ -42,9 +42,9 @@ def MenuAuditoria():
                 return ;
 
 #esta funcion es para insertar contenido en la tabla, como el id_log tine autoincremen no lo pongo
-def InsetarContenido() :
+def InsetarContenido () :
     #esto es para pedir datos al usuario
-    nombre =input(" Ingrese el usuario a ingresar : ");
+    nombre =input("Ingrese el usuario a ingresar : ");
     accion =input("Ingrese la accion a realizar INSERT/UPDATE/DELETE : ");
     tablaAfectada=input("Ingrese la tabla a afectar : ");
     descripcion=input("descripcion de la accion : ");
@@ -55,7 +55,7 @@ def InsetarContenido() :
         #creacion del un cursor es un puntenro practicamente
         ps =c.cursor()
         #creacion de la consulta sql
-        sqlsentence ="INSERT INTO auditoria(nombre,accion,tabla_afectada,descripcion),%(nombre)s,%(Accion)s,%(Tabla)s,%(descripcion)s)";
+        sqlsentence ="INSERT INTO auditoria(nombre,accion,tabla_afectada,descripcion) VALUES (%(nombre)s,%(Accion)s,%(Tabla)s,%(descripcion)s)";
         columnas = {"nombre" : nombre, "Accion" :accion,"Tabla":tablaAfectada,"descripcion" : descripcion};
 
         #ejecucion de esta gracias al puntero
