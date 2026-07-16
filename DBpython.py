@@ -3,10 +3,10 @@ import pymysql as sql
 def Conexion() :
     try :
         connexion = sql.connect(
-                host="192.168.1.77",
+                host="10.110.152.8",
                 port=3306,
                 database="banco",
-                user="integrador",
+                user="INTEGRADOR",
                 password="RETOS"
         )
         print("Se conecto ... Creo")

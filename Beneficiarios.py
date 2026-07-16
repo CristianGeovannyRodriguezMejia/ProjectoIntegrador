@@ -1,6 +1,6 @@
 from DBpython import *;
 import pymysql;
-opcBeneficiarios =0;
+
 insertbeneficiaros=[];
 updatebeneficiarios=[];
 deletebeneficiarios=[];
@@ -14,7 +14,7 @@ def MenuBeneficiarios():
     4.Eliminar Beneficiario 
     5. Volver al menu principal
     Digita la opcion: """
-
+    opcBeneficiarios =0;
     while opcBeneficiarios != 5  :
         opcBeneficiarios=int(input(opcionesBeneficiarios))
         match(opcBeneficiarios) :

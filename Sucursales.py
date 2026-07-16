@@ -1,7 +1,5 @@
 import pymysql
 from DBpython import *;
-
-opcSucursal=0;
 insertSucusal={};
 updateSucursal={};
 deleteSurcusal={};
@@ -14,6 +12,7 @@ def MenuSurcusales():
     4. Eliminar sucursal
     5. Atras
     Digita la opción deseada: """
+    opcSucursal=0;
     while opcSucursal != 5  :
         opcSucursal =int(input(opcionesSucusal))
         match(opcSucursal):
@@ -163,10 +162,8 @@ def MenuPrincipal() -> int :
     1. Gestionar Tipos Cuenta
     2. Gestionar Sucursales
     3. Gestionar Beneficiarios
-    4. Gestionar auditoria
-    4. Salir
-    Digita el número de la tabla a gestionar: """
-
+    4. Gestionar Auditoria
+    Digita el número de la tabla a gestionar:  """
     try:
         return int(input(opciones))
     

@@ -1,7 +1,7 @@
 import pymysql 
 from DBpython import *;
 import os;
-opcCuenta =0;
+
 insert=[];
 update=[];
 delete=[];
@@ -15,6 +15,7 @@ def MenuCuentas() :
     5.Atras
     Digita la opcion a usar :
     """
+    opcCuenta =0;
     while opcCuenta != 5  :
         opcCuenta =int(input(opcionesCuenta))
         match(opcCuenta):
@@ -50,7 +51,7 @@ def InsetarContenido() :
         c=Conexion();
         ps =c.cursor()
    
-        sqlsentence ="INSERT INTO tipos_cuenta(nombre,tasa_interes,saldo_minimo,descripcion),%(nombre)s,%(tasaInteres)s,%(saldoMinimo)s,%(descripcion)s)";
+        sqlsentence ="INSERT INTO tipos_cuenta(nombre,tasa_interes,saldo_minimo,descripcion) VALUES %(nombre)s,%(tasaInteres)s,%(saldoMinimo)s,%(descripcion)s)";
         columnas = {"nombre" : nombre, "tasaInteres" :tasaInteres,"saldoMinimo":saldoMinimo,"descripcion" : descripcion};
 
     
