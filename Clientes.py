@@ -6,19 +6,19 @@ updatebeneficiarios=[];
 deletebeneficiarios=[];
 #aqui estoy insertano lo menu de beneficiarios
 def MenuBeneficiarios():
-    opcionesBeneficiarios ="""
+    opcionesClientes ="""
     ----Gestionar Beneficiarios----
-    1.Mostrar Beneficiarios
-    2.insertar un Beneficiario
-    3.modificar Beneficiario 
-    4.Eliminar Beneficiario 
+    1.Mostrar Clientes
+    2.insertar un Clientes
+    3.modificar Clientes
+    4.Eliminar Clientes
     5. Volver al menu principal
     Digita la opcion: """
-    opcBeneficiarios =0;
-    while opcBeneficiarios != 5  :
+    opcClientes =0;
+    while opcClientes != 5  :
         os.system("clear")
-        opcBeneficiarios=int(input(opcionesBeneficiarios))
-        match(opcBeneficiarios) :
+        opcClientes=int(input(opcionesClientes))
+        match(opcClientes) :
          case 1 :        
             fi = MostrarBeneficiarios();
             print("\n ----Reguistros----")
@@ -49,71 +49,80 @@ def MenuBeneficiarios():
 
 
 def insertarBeneficiario():
-    id_cliente= input("Digite  el id del cliente : ")
-    nombre = input("ingrese el nombre del benificiario : ")
-    parentesco = input("Ingrese el parentesco : ")
-    porsentaje = input("Digite el porsentaje asignado : ")
+    dui= input("Digite su dui : ")
+    nombre = input("Ingrese su nombres : ")
+    apellido = input("Ingrese su apellidos : ")
+    Fechanacimiento = input("Digite su fecha de nacimiento aa/mm/dd : ")
+    dirrecion =input("Ingreses su dirrecion exacta de domicilio : ")
+    telefono = input("Digite su telefono : ")
+    correo = input("Ingrese una dirrecion de correo : ")
+
     try:
         c=Conexion()
         ps = c.cursor()
 
-        sqlsentece = "INSERT INTO beneficiario(id_CLiente, nombre,parentesco,porsentaje)VALUES " 
-        "(%(id_cliente)s,%(nombre)s,%(parentesco)s,%(porsentaje)s)"
-        columnas = {"id_cliente": id_cliente, "nombre": nombre,"parentesco" : parentesco, "porsentaje" : porsentaje}
+        sqlsentece = """INSERT INTO clientes (dui,nombres,apellidos,fecha_nacimiento,dirrecion,telefono,correo,fecha_reguistro) VALUES (%(dui)s,%(nombres)s,%(apellidos)s,%(fechaNacimiento)s,%(dirrecion)s,%(telefono)s,%(correo)s,NOW())"""
+        columnas = {"dui": dui ,"nombres": nombre,"apellidos" : apellido, "fechaNacimiento" : Fechanacimiento,"dirrecion":dirrecion,"telefono":telefono,"coreo": correo}
         ps.execute(sqlsentece, columnas)
         c.commit()
-        print("beneficiario insertado con exito ")
+        print("Cliente insertado con exito ")
         return columnas
     except pymysql.Error as fallo:
         print(f"error fatal : {fallo}")
-        Conexion.rollback()
+        c.rollback()
     finally:
         ps.close()
-        Conexion.close()
+        c.close()
 
 def EliminarBeneficiario():
     try: 
-        id_beneficiario = input("Digite el id del beneficiario a borrar : ")
+        id_cliente = input("Digite el id del cliente a borrar : ")
         c = Conexion();
         ps = c.cursor()
-        sqlsentence = "DELETE FROM beneficiario WHERE id_beneficiario = %(id_beneficiario)s"
-        columnas = {"id_beneficiario": id_beneficiario}
+        sqlsentence = "DELETE FROM clientes WHERE id_cliente = %(cliente)s"
+        columnas = {"cliente": id_cliente}
         ps.execute(sqlsentence, columnas)
         c.commit()
-        print("beneficiario eliminado con exito ")
+        print("cliente eliminado con exito ")
     except pymysql.Error as fallo:
         print(f"error fatal : {fallo}")
         Conexion.rollback()
     finally:
         ps.close()
-        Conexion.close()
+        c.close()
 
 def ActualizarBeneficiario():
             try:
-                id_beneficiario = input("Digite el id del beneficiario a modificar : ")
-                nombre = input("Ingrese el nuevo nombre del beneficiario : ")
-                parentesco = input("Ingrese el nuevo parentesco : ")
-                porsentaje = input("Ingrese el nuevo porcentaje asignado : ")
+                id = input("Digite el id del beneficiario a modificar : ")
+
+
+                dui =int("Digite el dui del cliente : ")
+                nombres = input("Ingrese el nuevo nombre del beneficiario : ")
+                apellidos = input("Ingrese el nuevo parentesco : ")
+                fechaNacimiento = input("Ingrese el nuevo porcentaje asignado : ")
+                dirrecion =input("Ingrese su dirrecion : ")
+                telefono = input("ingresa tu telefono : ")
+                correo = input("ingresa tu correo")
                 c=Conexion()
                 ps = Conexion.cursor()
-                sqlsentence = "UPDATE beneficiario SET id_cliente = %(id_cliente)s, nombre = %(nombre)s, parentesco = %(parentesco)s, porsentaje = %(porsentaje)s WHERE id_beneficiario = %(id_beneficiario)s"
-                columnas = {"id_beneficiario": id_beneficiario, "nombre": nombre, "parentesco": parentesco, "porsentaje": porsentaje}
+                sqlsentence = "UPDATE clientes SET dui = %(Dui)s, nombres = %(Nombre)s, apellidos = %(Apellido)s, fecha_nacimiento = %(Nacimiento)s,dirrecion =%(Dirrecion)s,telefono =%(Telefono)s,correo =%(Correo)s  WHERE id_cliente = %(condicion)s"
+                columnas = {"condicion": id,"Dui": dui, "Nombre": nombres, "Apellido": apellidos, "Nacimiento": fechaNacimiento,"Dirrecion" : dirrecion,"Telefono" : telefono,"Correo" : correo}
                 ps.execute(sqlsentence, columnas)
                 c.commit()
-                print("Beneficiario actualizado exitosamente")
+                print("Beneficiarios actualizado exitosamente")
             except pymysql.Error as fallo :
              print(f"error fatal : {fallo}")
              c.rollback()
             finally :
-             ps.close()
-             c.close()
+                ps.close()
+                c.close()
 
 #codigo de tabla benefisiarios no se si asi es o que pedo
 def MostrarBeneficiarios():
     try :
         c =Conexion()
         ps = c.cursor()
-        sqlsentence = "SELECT * FROM beneficiario;"
+        sqlsentence = "SELECT * FROM clientes;"
         ps.execute(sqlsentence)
         resul = ps.fetchall()
         return resul

@@ -1,7 +1,7 @@
 from Sucursales import * ;
 from TiposCuenta import *;
 from Auditorias import *;
-from Beneficiarios import *;
+from Clientes import *;
 import os
 #para prender este entorno virtual solo usa . venv/bin/activate en terminal
 opc=0;
@@ -10,15 +10,11 @@ while opc != 5  :
     opc=MenuPrincipal()
     match(opc):
      case 1 :
-        MenuCuentas();
-         
+        MenuCuentas(); 
      case 2:
-         MenuSurcusales();
-         
+         MenuSurcusales();      
      case 3:
         MenuBeneficiarios(); 
-        
-       
      case 4:
         MenuAuditoria();
    

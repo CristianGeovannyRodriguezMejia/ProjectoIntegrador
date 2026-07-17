@@ -160,7 +160,6 @@ def actualizar_sucursal():
         finally:
             ps.close()
             conexion.close()
-
 #Menu principal que controla los submenus para las otras bases
 #de datos tremendo me eh roto la cabeza con esta wea
 def MenuPrincipal() -> int :
@@ -168,7 +167,7 @@ def MenuPrincipal() -> int :
     === CONTROL DE BASE DE DATOS BANCO ===
     1. Gestionar Tipos Cuenta
     2. Gestionar Sucursales
-    3. Gestionar Beneficiarios
+    3. Gestionar Clientes
     4. Gestionar Auditoria
     Digita el número de la tabla a gestionar:  """
     try:

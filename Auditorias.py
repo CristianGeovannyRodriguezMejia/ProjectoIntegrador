@@ -45,7 +45,7 @@ def MenuAuditoria():
             os.system("clear") 
          case 5 :
             # esta cosa hace que vuelva atraz neta python es bien practico en java para volver atras
-            #tenia que hacer magia negra bueno exajero pero algo asi
+            #tenia que hacer magia negra bueno exajero pero algo asi.
                 return ;
 
 #esta funcion es para insertar contenido en la tabla, como el id_log tine autoincremen no lo pongo
