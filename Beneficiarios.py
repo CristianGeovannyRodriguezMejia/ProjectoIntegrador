@@ -1,6 +1,6 @@
 from conexion import *;
 import pymysql;
-
+import os
 insertbeneficiaros=[];
 updatebeneficiarios=[];
 deletebeneficiarios=[];
@@ -16,6 +16,7 @@ def MenuBeneficiarios():
     Digita la opcion: """
     opcBeneficiarios =0;
     while opcBeneficiarios != 5  :
+        os.system("clear")
         opcBeneficiarios=int(input(opcionesBeneficiarios))
         match(opcBeneficiarios) :
          case 1 :        

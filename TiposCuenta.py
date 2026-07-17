@@ -17,11 +17,12 @@ def MenuCuentas() :
     """
     opcCuenta =0;
     while opcCuenta != 5  :
+        os.system("clear")
         opcCuenta =int(input(opcionesCuenta))
         match(opcCuenta):
          case 1 :        
             print("\n ----Reguistros----")
-            print("id_tipo | nombre |  tasa_interes | saldo_minimo | descripcion");
+            print("id_tipo    | nombre   |  tasa_interes  | saldo_minimo  | descripcion");
             if not MostrarContenido() :
                 input("No existen reguistros en la base de datos");
             else :  

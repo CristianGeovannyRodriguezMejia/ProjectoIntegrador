@@ -1,5 +1,6 @@
 import pymysql
 from conexion import *;
+import os
 #Aca creo la variables globales 
 insertAuditoria=[];
 updateAuditoria=[];
@@ -16,6 +17,7 @@ def MenuAuditoria():
     Digita la opción deseada: """
     opcAuditoria =0;
     while opcAuditoria != 5  :
+        os.system("clear")
         opcAuditoria=int(input(opcionesAuditoria))
         match(opcAuditoria) :
          case 1 :        

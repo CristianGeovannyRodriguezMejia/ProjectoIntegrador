@@ -1,5 +1,6 @@
 import pymysql
 from conexion import *;
+import os;
 insertSucusal={};
 updateSucursal={};
 deleteSurcusal={};
@@ -14,6 +15,7 @@ def MenuSurcusales():
     Digita la opción deseada: """
     opcSucursal=0;
     while opcSucursal != 5  :
+        os.system("clear")
         opcSucursal =int(input(opcionesSucusal))
         match(opcSucursal):
          case 1 :        
