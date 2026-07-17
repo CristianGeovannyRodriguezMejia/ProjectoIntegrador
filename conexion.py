@@ -11,7 +11,7 @@ def Conexion() :
                 password=DB_PASSWORD
         )
         print("Se conecto ... Creo")
-        
+        os.system("clear")
         return connexion;
 
     except sql.Error as error :

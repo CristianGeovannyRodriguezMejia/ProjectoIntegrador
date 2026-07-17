@@ -1,6 +1,6 @@
 import pymysql 
 from conexion import *;
-import os;
+import os; 
 
 insert=[];
 update=[];
@@ -20,24 +20,31 @@ def MenuCuentas() :
         os.system("clear")
         opcCuenta =int(input(opcionesCuenta))
         match(opcCuenta):
-         case 1 :        
+         case 1 : 
+            filas = MostrarContenido();      
             print("\n ----Reguistros----")
             print("id_tipo    | nombre   |  tasa_interes  | saldo_minimo  | descripcion");
-            if not MostrarContenido() :
+            if not filas :
                 input("No existen reguistros en la base de datos");
             else :  
-                for filas in MostrarContenido() : 
-                    print(filas)
+                for fila in filas : 
+                    print(fila)
                 input("\n pulse ENTER para continuar ")
+                os.system("clear") 
+                
+                
          case 2:
             insert.append(InsetarContenido());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 3:
             update.append(ActualizarContenido());
-            input("\n pulse ENTER para continuar ");
+            input("\n pulse ENTER para continuar ");  os.system("clear") 
+            os.system("clear") 
          case 4:
             delete.append(EliminarContenido());
             print("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 5 :
                 return ;
 

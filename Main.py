@@ -11,13 +11,17 @@ while opc != 5  :
     match(opc):
      case 1 :
         MenuCuentas();
+         
      case 2:
          MenuSurcusales();
+         
      case 3:
         MenuBeneficiarios(); 
+        
        
      case 4:
         MenuAuditoria();
+   
 
 
     

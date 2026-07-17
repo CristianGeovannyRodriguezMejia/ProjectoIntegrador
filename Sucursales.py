@@ -1,9 +1,9 @@
 import pymysql
 from conexion import *;
 import os;
-insertSucusal={};
-updateSucursal={};
-deleteSurcusal={};
+insertSucusal=[];
+updateSucursal=[];
+deleteSurcusal=[];
 def MenuSurcusales():
     opcionesSucusal = """ 
     === GESTION DE SUCURSALES ===
@@ -18,24 +18,29 @@ def MenuSurcusales():
         os.system("clear")
         opcSucursal =int(input(opcionesSucusal))
         match(opcSucursal):
-         case 1 :        
+         case 1 : 
+            fila = mostrar_sucursales();       
             print("\n ----Reguistros----")
             print("id_tipo | nombre |  tasa_interes | saldo_minimo | descripcion");
-            if not mostrar_sucursales() :
+            if not fila:
                 input("No existen reguistros en la base de datos");
             else :  
-                for filas in mostrar_sucursales() : 
+                for filas in fila : 
                     print(filas)
                 input("\n pulse ENTER para continuar ")
+                os.system("clear") 
          case 2:
             insertSucusal.append(insertar_Sucursal());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 3:
             updateSucursal.append(actualizar_sucursal());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 4:
             deleteSurcusal.append(eliminar_sucursal());
             print("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 5 :
                 return ;
 

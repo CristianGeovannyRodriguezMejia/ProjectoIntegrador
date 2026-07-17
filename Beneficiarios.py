@@ -20,23 +20,28 @@ def MenuBeneficiarios():
         opcBeneficiarios=int(input(opcionesBeneficiarios))
         match(opcBeneficiarios) :
          case 1 :        
+            fi = MostrarBeneficiarios();
             print("\n ----Reguistros----")
             print("id_log | nombre |  accion | tabla afectada | descripcion");
-            if not MostrarBeneficiarios() :
+            if not fi  :
                 input("No existen reguistros en la base de datos");
             else :  
-                for filas in MostrarBeneficiarios() : 
+                for filas in fi : 
                     print(filas)
                 input("\n pulse ENTER para continuar ")
+                os.system("clear") 
          case 2:
             insertbeneficiaros.append(insertarBeneficiario());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 3:
             updatebeneficiarios.append(ActualizarBeneficiario());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 4:
             deletebeneficiarios.append(EliminarBeneficiario());
             print("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 5 :
             # esta cosa hace que vuelva atraz neta python es bien practico en java para volver atras
             #tenia que hacer magia negra

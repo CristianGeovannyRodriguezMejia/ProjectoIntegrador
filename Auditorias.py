@@ -20,27 +20,32 @@ def MenuAuditoria():
         os.system("clear")
         opcAuditoria=int(input(opcionesAuditoria))
         match(opcAuditoria) :
-         case 1 :        
+         case 1 :  
+            fila = MostrarContenido();      
             print("\n ----Reguistros----")
             print("id_log | nombre |  accion | tabla afectada | descripcion");
-            if not MostrarContenido() :
+            if not fila :
                 input("No existen reguistros en la base de datos");
             else :  
-                for filas in MostrarContenido() : 
+                for filas in fila: 
                     print(filas)
                 input("\n pulse ENTER para continuar ")
+                os.system("clear") 
          case 2:
             insertAuditoria.append(InsetarContenido());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 3:
             updateAuditoria.append(ActualizarContenido());
             input("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 4:
             deleteAuditoria.append(EliminarContenido());
             print("\n pulse ENTER para continuar ");
+            os.system("clear") 
          case 5 :
             # esta cosa hace que vuelva atraz neta python es bien practico en java para volver atras
-            #tenia que hacer magia negra
+            #tenia que hacer magia negra bueno exajero pero algo asi
                 return ;
 
 #esta funcion es para insertar contenido en la tabla, como el id_log tine autoincremen no lo pongo
